@@ -1,3 +1,2 @@
-import ReactSpinner from 'components/react-spinner';
-console.log(ReactSpinner);
-export default ReactSpinner;
+import Spinner from 'components/react-spinner';
+export default Spinner;
