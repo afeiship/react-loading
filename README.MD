@@ -1,5 +1,5 @@
-#react-spinner
-> Mint-ui(Vue2.x) widget react-spinner based on sass &amp; webpack.
+# react-spinner
+> Spinner for react.
 
 
 ## resource:
@@ -9,12 +9,20 @@
 
 
 ## props:
-| name | type | value | description |
-| :----| :----| :----| :----|
-| visible  | Boolean | true/false | v-show |
-
+```javascript
+static propTypes = {
+  className:PropTypes.string,
+  width:PropTypes.string,
+  size:PropTypes.string,
+  color:PropTypes.string
+};
+```
 
 ## usage:
-```html
-<react-spinner :visible="true" />
+```javascript
+
+ReactDOM.render(
+    <ReactSpinner width="2px" size="50px" color="#f00" />,
+    document.getElementById('app')
+);
 ```
