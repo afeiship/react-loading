@@ -4,6 +4,7 @@
 ## properties:
 ```javascript
 
+  // SEE 'react-visible'
   
 ```
 

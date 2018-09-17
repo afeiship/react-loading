@@ -9,6 +9,7 @@ import ReactAppendToDocument from 'react-append-to-document';
 
 export default class extends ReactVisible {
   /*===properties start===*/
+  // SEE 'react-visible'
   /*===properties end===*/
 
   get visibleElementView() {
