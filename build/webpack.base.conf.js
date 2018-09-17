@@ -9,11 +9,15 @@ var env = process.env.NODE_ENV;
 var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
 var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap)
 var useCssSourceMap = cssSourceMapDev || cssSourceMapProd;
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var externals = process.env.NODE_ENV === 'production' ? {
-  react: 'react',
-  classnames: 'classnames',
+  'react': 'react',
+  'classnames': 'classnames',
   'react-dom': 'react-dom',
-  'prop-types': 'prop-types',
+  'noop':'noop',
+  'mixin-decorator': 'mixin-decorator',
+  'object-assign':'object-assign',
+  'prop-types':'prop-types',
 } : {};
 
 module.exports = {
@@ -29,15 +33,25 @@ module.exports = {
     extensions: ['', '.js', '.jsx','.scss'],
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
+      React: path.resolve(__dirname, '../node_modules/react'),
+      ReactDOM: path.resolve(__dirname, '../node_modules/react-dom'),
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
+      'mixins': path.resolve(__dirname, '../src/components'),
       'components': path.resolve(__dirname, '../src/components')
     }
   },
   plugins:[
+    new CopyWebpackPlugin([
+      {
+        from:'./src/components/style.scss',
+        to:'./style.scss',
+      }
+    ]),
     new webpack.ProvidePlugin({
         'React': 'react',
-        'ReactDOM': 'react-dom'
+        'ReactDOM': 'react-dom',
+        'mixin': 'mixin-decorator'
     }),
   ],
   resolveLoader: {

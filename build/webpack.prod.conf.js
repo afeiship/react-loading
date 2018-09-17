@@ -9,8 +9,8 @@ base.entry = {
 base.output = {
   path: config.build.assetsRoot,
   publicPath: config.build.assetsPublicPath,
-  filename: 'react-spinner.js',
-  library: 'ReactSpinner',
+  filename: 'react-loading.js',
+  library: 'ReactLoading',
   libraryTarget: 'umd'
 }
 

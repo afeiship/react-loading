@@ -1,2 +1,2 @@
-import Spinner from 'components/react-spinner';
-export default Spinner;
+import ReactLoading from 'components/react-loading';
+export default ReactLoading;
