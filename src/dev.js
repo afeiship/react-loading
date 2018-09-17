@@ -1,27 +1,38 @@
 import './dev.scss';
-import ReactLoading from './main';
+import { ReactLoading, Loading } from './main';
 
 /*===example start===*/
 
 // install: npm install afeiship/react-loading --save
 // import : import ReactLoading from 'react-loading'
 
-class App extends React.Component{
+class App extends React.Component {
   state = {
 
   };
 
-  constructor(props){
+  constructor(props) {
     super(props);
     window.demo = this;
     window.refs = this.refs;
     window.rc = this.refs.rc;
+    Loading.init();
   }
 
-  render(){
+  _onShow = () => {
+    Loading.present({
+      content:'Loading...'
+    })
+  };
+  _onHide = () => {
+    Loading.dismiss();
+  };
+
+  render() {
     return (
       <div className="hello-react-loading">
-        <ReactLoading ref='rc' />
+        <button className="button" onClick={this._onShow}>SHOW</button>
+        <button className="button" onClick={this._onHide}>Hide</button>
       </div>
     );
   }
@@ -29,6 +40,6 @@ class App extends React.Component{
 /*===example end===*/
 
 ReactDOM.render(
-    <App />,
-    document.getElementById('app')
+  <App />,
+  document.getElementById('app')
 );
