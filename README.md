@@ -43,6 +43,7 @@ class App extends React.Component {
     window.refs = this.refs;
     window.rc = this.refs.rc;
     Loading.init();
+    window.loading = Loading;
   }
 
   _onShow = () => {
