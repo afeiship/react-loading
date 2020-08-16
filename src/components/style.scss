@@ -1,28 +1,14 @@
 $react-loading-options:(
-    z-index: (
+  z-index: (
     backdrop: 98,
     loading: 100
   )
 )!default;
 
-@import 'node_modules/webkit-sassui-loading/dist/webkit-sassui-loading.scss';
-@import 'node_modules/webkit-sassui-backdrop/dist/webkit-sassui-backdrop.scss';
-
 .react-loading{
-    $z-index: map-get(
-    $map: $react-loading-options,
-    $key: z-index
-  );
-
-  $loading-z-index: map-get(
-    $map: $z-index,
-    $key: loading
-  );
-
-  $backdrop-z-index: map-get(
-    $map: $z-index,
-    $key: backdrop
-  );
+  $z-index: map-get( $map: $react-loading-options, $key: z-index );
+  $loading-z-index: map-get( $map: $z-index, $key: loading );
+  $backdrop-z-index: map-get( $map: $z-index, $key: backdrop );
 
   &,
   & + .webkit-sassui-backdrop{
@@ -32,5 +18,12 @@ $react-loading-options:(
   z-index: $loading-z-index;
   & + .webkit-sassui-backdrop {
     z-index: $backdrop-z-index;
+  }
+
+  &__body{
+    figcaption{
+      margin-top: 2px;
+      font-size: 12px;
+    }
   }
 }

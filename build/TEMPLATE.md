@@ -17,12 +17,7 @@ npm update @feizheng/react-loading
 ```
 
 ## properties
-| Name      | Type   | Required | Default | Description                           |
-| --------- | ------ | -------- | ------- | ------------------------------------- |
-| className | string | false    | -       | The extended className for component. |
-| value     | object | false    | null    | Default value.                        |
-| onChange  | func   | false    | noop    | The change handler.                   |
-
+__GENERATE_DOCS__
 
 ## usage
 1. import css
@@ -34,24 +29,7 @@ npm update @feizheng/react-loading
   ```
 2. import js
   ```js
-  import ReactLoading from '@feizheng/react-loading';
-  import ReactDOM from 'react-dom';
-  import React from 'react';
-  import './assets/style.scss';
-
-  class App extends React.Component {
-    componentDidMount() {}
-    render() {
-      return (
-        <div className="app-container">
-          <ReactLoading />
-        </div>
-      );
-    }
-  }
-
-  ReactDOM.render(<App />, document.getElementById('app'));
-
+__GENERATE_DAPP__
   ```
 
 ## documentation

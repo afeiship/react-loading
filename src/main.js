@@ -1,6 +1,2 @@
-import ReactLoading from 'components/react-loading';
-import Loading from 'components/loading';
-export {
-  ReactLoading,
-  Loading
-};
+import ReactLoading from './components';
+export default ReactLoading;
