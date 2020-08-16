@@ -29,6 +29,8 @@ npm update @feizheng/react-loading
 ## usage
 1. import css
   ```scss
+  @import "~@feizheng/webkit-sassui-backdrop";
+  @import "~@feizheng/webkit-sassui-loading";
   @import "~@feizheng/react-loading/dist/style.scss";
 
   // customize your styles:
