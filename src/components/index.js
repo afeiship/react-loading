@@ -7,8 +7,7 @@ import ReactVisible from '@feizheng/react-visible';
 import ReactBackdrop from '@feizheng/react-backdrop';
 
 const CLASS_NAME = 'react-loading';
-const LOADING_GIF =
-  'https://tva1.sinaimg.cn/large/006tNbRwgy1fvcdkbo352g303k03kq2r.gif';
+const LOADING_GIF = 'https://tva1.sinaimg.cn/large/006tNbRwgy1fvcdkbo352g303k03kq2r.gif';
 
 export default class ReactLoading extends ReactVisible {
   static displayName = CLASS_NAME;
@@ -22,10 +21,6 @@ export default class ReactLoading extends ReactVisible {
      * Abstract visible value.
      */
     value: PropTypes.bool,
-    /**
-     * Loading text.
-     */
-    content: PropTypes.string,
     /**
      * If element destroyed when visible to false.
      * In modal case:
@@ -54,7 +49,7 @@ export default class ReactLoading extends ReactVisible {
       destroyable,
       backdrop,
       value,
-      content,
+      children,
       ...props
     } = this.props;
     const { hidden } = this.state;
@@ -72,7 +67,7 @@ export default class ReactLoading extends ReactVisible {
           {...props}>
           <figure className={`${CLASS_NAME}__body`}>
             <img width="32" src={LOADING_GIF} />
-            <figcaption>{content}</figcaption>
+            <figcaption>{children}</figcaption>
           </figure>
         </div>
         {!!backdrop && <ReactBackdrop value={this.state.value} {...backdrop} />}

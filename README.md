@@ -17,11 +17,13 @@ npm update @feizheng/react-loading
 ```
 
 ## properties
-| Name      | Type   | Required | Default | Description                           |
-| --------- | ------ | -------- | ------- | ------------------------------------- |
-| className | string | false    | -       | The extended className for component. |
-| value     | object | false    | null    | Default value.                        |
-| onChange  | func   | false    | noop    | The change handler.                   |
+| Name        | Type   | Required | Default | Description                                 |
+| ----------- | ------ | -------- | ------- | ------------------------------------------- |
+| className   | string | false    | -       | The extended className for component.       |
+| value       | bool   | false    | -       | Abstract visible value.                     |
+| destroyable | bool   | false    | false   | If element destroyed when visible to false. |
+| onChange    | func   | false    | noop    | The change handler.                         |
+| backdrop    | union  | false    | -       | Backdrop props or not display backdrop.     |
 
 
 ## usage
@@ -40,11 +42,29 @@ npm update @feizheng/react-loading
   import './assets/style.scss';
 
   class App extends React.Component {
-    componentDidMount() {}
+    state = {
+      value: false
+    };
+
     render() {
       return (
         <div className="app-container">
-          <ReactLoading />
+          <button
+            className="button"
+            onClick={(e) => {
+              this.setState({ value: !this.state.value });
+            }}>
+            Toggle
+          </button>
+          <ReactLoading
+            backdrop={{
+              onClick: () => {
+                this.setState({ value: false });
+              }
+            }}
+            value={this.state.value}>
+            加载中
+          </ReactLoading>
         </div>
       );
     }

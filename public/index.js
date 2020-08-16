@@ -24,9 +24,9 @@ class App extends React.Component {
               this.setState({ value: false });
             }
           }}
-          value={this.state.value}
-          content={'加载中'}
-        />
+          value={this.state.value}>
+          加载中
+        </ReactLoading>
       </div>
     );
   }
