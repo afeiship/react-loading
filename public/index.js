@@ -1,6 +1,7 @@
 import ReactLoading from '../src/main';
 import ReactDOM from 'react-dom';
 import React from 'react';
+import { ReactVisibleController } from '@feizheng/react-visible';
 import './assets/style.scss';
 
 class App extends React.Component {
@@ -8,25 +9,30 @@ class App extends React.Component {
     value: false
   };
 
+  componentDidMount() {
+    // global config
+    this.appLoading = new ReactVisibleController(ReactLoading, {
+      children: 'loading',
+      backdrop: {
+        onClick: () => {
+          this.appLoading.dismiss();
+        }
+      }
+    });
+  }
+
   render() {
     return (
       <div className="app-container">
         <button
           className="button"
           onClick={(e) => {
-            this.setState({ value: !this.state.value });
+            this.appLoading.present(() => {
+              console.log('present.');
+            });
           }}>
-          Toggle
+          Show Loading.
         </button>
-        <ReactLoading
-          backdrop={{
-            onClick: () => {
-              this.setState({ value: false });
-            }
-          }}
-          value={this.state.value}>
-          加载中
-        </ReactLoading>
       </div>
     );
   }

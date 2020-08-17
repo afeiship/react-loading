@@ -17,13 +17,10 @@ npm update @feizheng/react-loading
 ```
 
 ## properties
-| Name        | Type   | Required | Default | Description                                 |
-| ----------- | ------ | -------- | ------- | ------------------------------------------- |
-| className   | string | false    | -       | The extended className for component.       |
-| value       | bool   | false    | -       | Abstract visible value.                     |
-| destroyable | bool   | false    | false   | If element destroyed when visible to false. |
-| onChange    | func   | false    | noop    | The change handler.                         |
-| backdrop    | union  | false    | -       | Backdrop props or not display backdrop.     |
+| Name          | Type   | Required | Default                 | Description                             |
+| ------------- | ------ | -------- | ----------------------- | --------------------------------------- |
+| mainClassName | string | false    | 'webkit-sassui-loading' | The loading key effect css className.   |
+| backdrop      | union  | false    | -                       | Backdrop props or not display backdrop. |
 
 
 ## usage
@@ -41,6 +38,7 @@ npm update @feizheng/react-loading
   import ReactLoading from '@feizheng/react-loading';
   import ReactDOM from 'react-dom';
   import React from 'react';
+  import { ReactVisibleController } from '@feizheng/react-visible';
   import './assets/style.scss';
 
   class App extends React.Component {
@@ -48,25 +46,37 @@ npm update @feizheng/react-loading
       value: false
     };
 
+    componentDidMount() {
+      this.appLoading = new ReactVisibleController(ReactLoading, {
+        backdrop: {
+          onClick: () => {
+            this.appLoading.dismiss();
+          }
+        }
+      });
+    }
+
     render() {
       return (
         <div className="app-container">
           <button
             className="button"
             onClick={(e) => {
-              this.setState({ value: !this.state.value });
+              this.appLoading.present(() => {
+                console.log('present.');
+              });
             }}>
-            Toggle
+            Present
           </button>
-          <ReactLoading
-            backdrop={{
-              onClick: () => {
-                this.setState({ value: false });
-              }
-            }}
-            value={this.state.value}>
-            加载中
-          </ReactLoading>
+          <button
+            className="button"
+            onClick={(e) => {
+              this.appLoading.dismiss(() => {
+                console.log('dismiss.');
+              });
+            }}>
+            Dismiss
+          </button>
         </div>
       );
     }
