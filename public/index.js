@@ -14,6 +14,7 @@ class App extends React.Component {
     this.appLoading = new ReactVisibleController(ReactLoading, {
       children: 'loading',
       backdrop: {
+        transparent: true,
         onClick: () => {
           this.appLoading.dismiss();
         }

@@ -47,8 +47,11 @@ npm update @feizheng/react-loading
     };
 
     componentDidMount() {
+      // global config
       this.appLoading = new ReactVisibleController(ReactLoading, {
+        children: 'loading',
         backdrop: {
+          transparent: true,
           onClick: () => {
             this.appLoading.dismiss();
           }
@@ -66,16 +69,7 @@ npm update @feizheng/react-loading
                 console.log('present.');
               });
             }}>
-            Present
-          </button>
-          <button
-            className="button"
-            onClick={(e) => {
-              this.appLoading.dismiss(() => {
-                console.log('dismiss.');
-              });
-            }}>
-            Dismiss
+            Show Loading.
           </button>
         </div>
       );

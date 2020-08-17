@@ -1,6 +1,6 @@
 {
   "name": "@feizheng/react-loading",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Spinner component for react.",
   "main": "dist/index.js",
   "scripts": {
@@ -76,7 +76,7 @@
   },
   "dependencies": {
     "@feizheng/noop": "^1.0.0",
-    "@feizheng/react-backdrop": "^1.0.2",
+    "@feizheng/react-backdrop": "^1.0.5",
     "@feizheng/react-visible": "^1.0.5",
     "@feizheng/webkit-sassui-loading": "^1.0.0",
     "autoprefixer": "^9.7.4",
