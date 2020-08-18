@@ -16,7 +16,9 @@ class App extends React.Component {
       backdrop: {
         transparent: true,
         onClick: () => {
-          this.appLoading.dismiss();
+          this.appLoading.dismiss(()=>{
+            console.log('after dismiss');
+          });
         }
       }
     });
@@ -28,11 +30,14 @@ class App extends React.Component {
         <button
           className="button"
           onClick={(e) => {
-            this.appLoading.present(() => {
-              console.log('present.');
-            });
+            this.appLoading.present(
+              () => {
+                console.log('after present');
+              },
+              { children: `[ ${Math.random().toString(36).slice(-6)} ]` }
+            );
           }}>
-          Show Loading.
+          Show Dynamic Loading.
         </button>
       </div>
     );

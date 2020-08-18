@@ -5,7 +5,8 @@ import ReactVisible from '@feizheng/react-visible';
 import ReactBackdrop from '@feizheng/react-backdrop';
 
 const CLASS_NAME = 'react-loading';
-const LOADING_GIF = 'https://tva1.sinaimg.cn/large/006tNbRwgy1fvcdkbo352g303k03kq2r.gif';
+const LOADING_GIF =
+  'https://tva1.sinaimg.cn/large/006tNbRwgy1fvcdkbo352g303k03kq2r.gif';
 
 export default class ReactLoading extends ReactVisible {
   static displayName = CLASS_NAME;
@@ -19,10 +20,7 @@ export default class ReactLoading extends ReactVisible {
     /**
      * Backdrop props or not display backdrop.
      */
-    backdrop: PropTypes.oneOfType([
-      PropTypes.bool,
-      PropTypes.object
-    ])
+    backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.object])
   };
 
   static defaultProps = {
@@ -36,13 +34,13 @@ export default class ReactLoading extends ReactVisible {
       mainClassName,
       destroyable,
       backdrop,
+      rootable,
       value,
-      children,
       onPresent,
       onDismiss,
       ...props
     } = this.props;
-    const { hidden } = this.state;
+    const { hidden, children } = this.state;
 
     return (
       <React.Fragment>
@@ -50,7 +48,7 @@ export default class ReactLoading extends ReactVisible {
           hidden={hidden}
           data-visible={this.state.value}
           onAnimationEnd={this.handleAnimationEnd}
-          className={classNames(`${mainClassName} ${CLASS_NAME}`, className)}
+          className={classNames(mainClassName, CLASS_NAME, className)}
           {...props}>
           <figure className={`${CLASS_NAME}__body`}>
             <img width="32" src={LOADING_GIF} />
