@@ -1,7 +1,7 @@
 import ReactLoading from '../src/main';
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { ReactVisibleController } from '@feizheng/react-visible';
+import { Controller } from '@feizheng/react-visible';
 import './assets/style.scss';
 
 class App extends React.Component {
@@ -10,13 +10,12 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    // global config
-    this.appLoading = new ReactVisibleController(ReactLoading, {
-      children: 'loading',
+    Controller.singleton(ReactLoading, {
+      // children: 'loading',
       backdrop: {
         transparent: true,
         onClick: () => {
-          this.appLoading.dismiss(()=>{
+          ReactLoading.dismiss(() => {
             console.log('after dismiss');
           });
         }
@@ -30,7 +29,7 @@ class App extends React.Component {
         <button
           className="button"
           onClick={(e) => {
-            this.appLoading.present(
+            ReactLoading.present(
               () => {
                 console.log('after present');
               },

@@ -38,7 +38,7 @@ npm update @feizheng/react-loading
   import ReactLoading from '@feizheng/react-loading';
   import ReactDOM from 'react-dom';
   import React from 'react';
-  import { ReactVisibleController } from '@feizheng/react-visible';
+  import { Controller } from '@feizheng/react-visible';
   import './assets/style.scss';
 
   class App extends React.Component {
@@ -47,13 +47,14 @@ npm update @feizheng/react-loading
     };
 
     componentDidMount() {
-      // global config
-      this.appLoading = new ReactVisibleController(ReactLoading, {
-        children: 'loading',
+      Controller.singleton(ReactLoading, {
+        // children: 'loading',
         backdrop: {
           transparent: true,
           onClick: () => {
-            this.appLoading.dismiss();
+            ReactLoading.dismiss(() => {
+              console.log('after dismiss');
+            });
           }
         }
       });
@@ -65,11 +66,14 @@ npm update @feizheng/react-loading
           <button
             className="button"
             onClick={(e) => {
-              this.appLoading.present(() => {
-                console.log('present.');
-              });
+              ReactLoading.present(
+                () => {
+                  console.log('after present');
+                },
+                { children: `[ ${Math.random().toString(36).slice(-6)} ]` }
+              );
             }}>
-            Show Loading.
+            Show Dynamic Loading.
           </button>
         </div>
       );
