@@ -1,0 +1,10 @@
+.react-loading {
+  z-index: 100; }
+  .react-loading,
+  .react-loading + .webkit-sassui-backdrop {
+    position: fixed; }
+  .react-loading + .webkit-sassui-backdrop {
+    z-index: 98; }
+  .react-loading__body figcaption {
+    margin-top: 2px;
+    font-size: 12px; }

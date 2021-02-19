@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import ReactVisible from '@feizheng/react-visible';
-import ReactBackdrop from '@feizheng/react-backdrop';
+import ReactVisible from '@jswork/react-visible';
+import ReactBackdrop from '@jswork/react-backdrop';
 
 const CLASS_NAME = 'react-loading';
 const LOADING_GIF =
@@ -25,7 +25,7 @@ export default class ReactLoading extends ReactVisible {
 
   static defaultProps = {
     ...ReactVisible.defaultProps,
-    mainClassName: 'webkit-sassui-loading'
+    mainClassName: 'wsui-loading'
   };
 
   get visibleElementView() {

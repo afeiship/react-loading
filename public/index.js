@@ -1,7 +1,9 @@
-import ReactLoading from '../src/main';
-import ReactDOM from 'react-dom';
+import ReactDemokit from '@jswork/react-demokit';
 import React from 'react';
-import { Controller } from '@feizheng/react-visible';
+import ReactDOM from 'react-dom';
+import ReactLoading from '../src/main';
+import { Controller } from '@jswork/react-visible';
+
 import './assets/style.scss';
 
 class App extends React.Component {
@@ -10,22 +12,28 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    Controller.singleton(ReactLoading, {
-      // children: 'loading',
-      backdrop: {
-        transparent: true,
-        onClick: () => {
-          ReactLoading.dismiss(() => {
-            console.log('after dismiss');
-          });
+    Controller.createInstance(
+      ReactLoading,
+      {
+        // children: 'loading',
+        backdrop: {
+          transparent: true,
+          onClick: () => {
+            ReactLoading.dismiss(() => {
+              console.log('after dismiss');
+            });
+          }
         }
-      }
-    });
+      },
+      true
+    );
   }
 
   render() {
     return (
-      <div className="app-container">
+      <ReactDemokit
+        className="p-3 app-container"
+        url="https://github.com/afeiship/react-loading">
         <button
           className="button"
           onClick={(e) => {
@@ -38,7 +46,7 @@ class App extends React.Component {
           }}>
           Show Dynamic Loading.
         </button>
-      </div>
+      </ReactDemokit>
     );
   }
 }
