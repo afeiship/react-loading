@@ -7,4 +7,10 @@
 @import "~@jswork/wsui-loading";
 
 .app-container {
+  .is-body {
+    padding: 20px;
+    background: #fff;
+    width: 500px;
+    margin: 0 auto;
+  }
 }
